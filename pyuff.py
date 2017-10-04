@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 # Copyright (C) 2014-2017 Primož Čermelj, Matjaž Mršnik, Miha Pirnat, Janko Slavič, Blaž Starc (in alphabetic order)
 # 
 # This file is part of pyuff.
@@ -1308,7 +1308,7 @@ class UFF:
                     # double precision - 8 bytes
                     values = np.asarray(struct.unpack('%c%sd' % (bo, int(len(split_data) / 8)), split_data), 'd')
             else:
-                split_data = ''.join(blockData.decode('ascii').splitlines(True)[13:]).split()
+                split_data = ''.join(blockData.decode('ascii', 'replace').splitlines(True)[13:]).split()
                 # TODO: This is not a good implementation -- sometimes there is no space
                 # between values and we get '2.99110e-02-10.00000e-05'. The string should
                 # be split by number of characters!24
